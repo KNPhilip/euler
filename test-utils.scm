@@ -1,12 +1,19 @@
+(define test-name "")
 (define test-results '())
+
+(define (initialize-test name)
+  (set! test-name name)
+  (set! test-results '()))
 
 (define (assert-equal expected actual)
   (let ((result (equal? expected actual)))
     (set! test-results (cons result test-results))
     (if result
-        (display ".")
+        #t
         (begin
-          (display "\nTest failed:\n")
+          (display "\nAssertion failed in \"") 
+          (display test-name) (display "\":\n")
+          
           (display "  Expected: ") (write expected) (newline)
           (display "  Got: ") (write actual) (newline)))
     result))
@@ -18,16 +25,14 @@
          (count pred (cdr lst))
       )))
 
-(define (summary)
+(define (end-test)
   (let* ((total (length test-results))
          (passed (count (lambda (x) x) test-results))
          (failed (- total passed)))
     (newline)
-    (display "Summary:\n")
+    (display "Finished running \"") (display test-name) (display "\": \n")
     (display "  Total tests: ") (write total) (newline)
     (display "  Passed: ") (write passed) (newline)
     (display "  Failed: ") (write failed) (newline)
+    (newline)
     (exit)))
-
-(define (initialize-test-results)
-  (set! test-results '()))

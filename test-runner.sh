@@ -21,7 +21,9 @@ for project in */; do
 
                 output=$(mit-scheme --batch-mode --load "$test_file" 2>&1)
 
-                echo "$output"
+                if echo "$output" | grep -q "Assertion failed"; then
+                    echo "$output"
+                fi
 
                 passed=$(echo "$output" | grep "Passed:" | awk '{print $2}')
                 failed=$(echo "$output" | grep "Failed:" | awk '{print $2}')

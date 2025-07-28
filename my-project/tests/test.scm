@@ -1,5 +1,5 @@
 (load "test-utils.scm")
-(load "001/src/logic.scm")
+(load "my-project/src/logic.scm")
 
 (initialize-test-results)
 

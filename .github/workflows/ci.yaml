@@ -2,16 +2,11 @@ name: Continuous Integration
 
 on:
   push:
-  pull_request:
 
 jobs:
   test:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-
-      - name: Install MIT Scheme
-        run: sudo apt-get install mit-scheme
-
-      - name: Run All Tests
-        run: bash test-runner.sh
+      - run: sudo apt-get install mit-scheme
+      - run: bash test-runner.sh

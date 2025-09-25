@@ -1,5 +1,5 @@
 (load "test-utils.scm")
-(load "001/src/main.scm")
+(load "001-100/001/src/main.scm")
 
 (initialize-test "001 test suite")
 

@@ -1,14 +1,9 @@
-(load "lib/essentials.scm")
-
 (define (fib n)
   (if (< n 2) 
     1 
     (+ (fib (- n 2)) 
        (fib (- n 1))
     )))
-
-(define (even? n)
-  (= (modulo n 2) 0))
 
 (define (sum-even-fibs-up-to limit)
   (define (loop n acc)

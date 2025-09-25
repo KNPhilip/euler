@@ -14,11 +14,10 @@ total_passed=0
 total_failed=0
 
 for project in */; do
-    test_dir="${project}tests"
-    if [ -d "$test_dir" ]; then
+    test_dirs=$(find "$project" -type d -name "tests")
+    for test_dir in $test_dirs; do
         for test_file in "$test_dir"/*.scm; do
             if [ -f "$test_file" ]; then
-
                 output=$(mit-scheme --batch-mode --load "$test_file" 2>&1)
 
                 if echo "$output" | grep -q "Assertion failed"; then
@@ -34,7 +33,7 @@ for project in */; do
                 total_failed=$((total_failed + failed))
             fi
         done
-    fi
+    done
 done
 
 echo

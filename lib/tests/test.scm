@@ -19,4 +19,15 @@
 (assert-equal '(3 2 4) (delete-duplicates '(3 2 3 4 3)))
 (assert-equal '(2 7) (delete-duplicates '(2 2 2 2 7 7 2 7)))
 
+; Can reverse a string.
+(assert-equal "" (string-reverse ""))
+(assert-equal "cba" (string-reverse "abc"))
+(assert-equal "!dlroW olleH" (string-reverse "Hello World!"))
+
+; Can increment and decrement.
+(assert-equal 5 (inc 4))
+(assert-equal 46 (inc 45))
+(assert-equal 7 (dec 8))
+(assert-equal 21 (dec 22))
+
 (end-test)

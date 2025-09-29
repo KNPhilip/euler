@@ -18,3 +18,16 @@
                       new-list
                       (begin (hash-table-set! seen x #t)
                              (cons x new-list)))))))))
+
+(define (string-reverse str)
+  (define (reverse-helper lst acc)
+    (if (null? lst)
+        acc
+        (reverse-helper (cdr lst) (cons (car lst) acc))))
+  (list->string (reverse-helper (string->list str) '())))
+
+(define (inc n)
+  (+ n 1))
+
+(define (dec n)
+  (- n 1))

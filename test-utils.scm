@@ -18,6 +18,30 @@
           (display "  Got: ") (write actual) (newline)))
     result))
 
+(define (assert-true actual)
+  (let ((result (equal? #t actual)))
+    (set! test-results (cons result test-results))
+    (if result
+        #t
+        (begin
+          (display "\nAssertion failed in \"") 
+          (display test-name) (display "\":\n")
+          
+          (display "  Expected #t but got: ") (write actual)))
+    result))
+
+(define (assert-false actual)
+  (let ((result (equal? #f actual)))
+    (set! test-results (cons result test-results))
+    (if result
+        #t
+        (begin
+          (display "\nAssertion failed in \"") 
+          (display test-name) (display "\":\n")
+          
+          (display "  Expected #f but got: ") (write actual)))
+    result))
+
 (define (count pred lst)
   (if (null? lst)
       0

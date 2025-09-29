@@ -9,6 +9,8 @@ RESET="\033[0m"
 echo
 echo "Running all Scheme tests..."
 
+start_time=$(date +%s)
+
 total_tests=0
 total_passed=0
 total_failed=0
@@ -36,12 +38,16 @@ for project in */; do
     done
 done
 
+end_time=$(date +%s)
+elapsed_time=$((end_time - start_time))
+
 echo
 echo "=============================="
 echo -e "Total Passed: ${GREEN}${total_passed}${RESET}"
 echo -e "Total Failed: ${RED}${total_failed}${RESET}"
 echo -e "Total Tests:  ${total_tests}"
 echo "=============================="
+echo "Total Time Taken: ${elapsed_time} seconds"
 
 if [ "$total_failed" -gt 0 ]; then
     exit 1

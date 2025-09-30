@@ -24,10 +24,17 @@
 (assert-equal "cba" (string-reverse "abc"))
 (assert-equal "!dlroW olleH" (string-reverse "Hello World!"))
 
-; Can increment and decrement.
+; Can increment, decrement, and sum.
 (assert-equal 5 (inc 4))
 (assert-equal 46 (inc 45))
 (assert-equal 7 (dec 8))
 (assert-equal 21 (dec 22))
+(assert-equal 4 (sum '(2 2)))
+(assert-equal 20 (sum '(14 6)))
+
+; Computes the square.
+(assert-equal 4 (square 2))
+(assert-equal 16 (square 4))
+(assert-equal 64 (square 8))
 
 (end-test)

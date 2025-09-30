@@ -31,3 +31,9 @@
 
 (define (dec n)
   (- n 1))
+
+(define (sum lst)
+  (apply + lst))
+
+(define (square n)
+  (* n n))
